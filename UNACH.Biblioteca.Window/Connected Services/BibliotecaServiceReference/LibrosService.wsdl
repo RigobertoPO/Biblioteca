@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="Bienvenido">
+        <s:complexType />
+      </s:element>
+      <s:element name="BienvenidoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BienvenidoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLibros">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetLibrosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLibrosResult" type="tns:ArrayOfLibro" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLibro">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Libro" nillable="true" type="tns:Libro" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Libro">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISBN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Titulo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AñoPublicacion" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Editorial" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateLibro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="isbn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="titulo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="añoPublicacion" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="editorial" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateLibroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateLibroResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateLibro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="isbn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="titulo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="añoPublicacion" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="editorial" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateLibroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateLibroResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteLibro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteLibroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteLibroResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="BienvenidoSoapIn">
+    <wsdl:part name="parameters" element="tns:Bienvenido" />
+  </wsdl:message>
+  <wsdl:message name="BienvenidoSoapOut">
+    <wsdl:part name="parameters" element="tns:BienvenidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLibrosSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLibros" />
+  </wsdl:message>
+  <wsdl:message name="GetLibrosSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLibrosResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateLibroSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateLibro" />
+  </wsdl:message>
+  <wsdl:message name="CreateLibroSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateLibroResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLibroSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateLibro" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLibroSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateLibroResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteLibroSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteLibro" />
+  </wsdl:message>
+  <wsdl:message name="DeleteLibroSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteLibroResponse" />
+  </wsdl:message>
+  <wsdl:portType name="LibrosServiceSoap">
+    <wsdl:operation name="Bienvenido">
+      <wsdl:input message="tns:BienvenidoSoapIn" />
+      <wsdl:output message="tns:BienvenidoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLibros">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">lista de libros</wsdl:documentation>
+      <wsdl:input message="tns:GetLibrosSoapIn" />
+      <wsdl:output message="tns:GetLibrosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateLibro">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">metodo insertar un libro</wsdl:documentation>
+      <wsdl:input message="tns:CreateLibroSoapIn" />
+      <wsdl:output message="tns:CreateLibroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLibro">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Modificar datos del libro</wsdl:documentation>
+      <wsdl:input message="tns:UpdateLibroSoapIn" />
+      <wsdl:output message="tns:UpdateLibroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLibro">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Eliminar un libro</wsdl:documentation>
+      <wsdl:input message="tns:DeleteLibroSoapIn" />
+      <wsdl:output message="tns:DeleteLibroSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LibrosServiceSoap" type="tns:LibrosServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Bienvenido">
+      <soap:operation soapAction="http://tempuri.org/Bienvenido" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLibros">
+      <soap:operation soapAction="http://tempuri.org/GetLibros" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateLibro">
+      <soap:operation soapAction="http://tempuri.org/CreateLibro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLibro">
+      <soap:operation soapAction="http://tempuri.org/UpdateLibro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLibro">
+      <soap:operation soapAction="http://tempuri.org/DeleteLibro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LibrosServiceSoap12" type="tns:LibrosServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Bienvenido">
+      <soap12:operation soapAction="http://tempuri.org/Bienvenido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLibros">
+      <soap12:operation soapAction="http://tempuri.org/GetLibros" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateLibro">
+      <soap12:operation soapAction="http://tempuri.org/CreateLibro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLibro">
+      <soap12:operation soapAction="http://tempuri.org/UpdateLibro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLibro">
+      <soap12:operation soapAction="http://tempuri.org/DeleteLibro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LibrosService">
+    <wsdl:port name="LibrosServiceSoap" binding="tns:LibrosServiceSoap">
+      <soap:address location="https://localhost:44388/LibrosService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LibrosServiceSoap12" binding="tns:LibrosServiceSoap12">
+      <soap12:address location="https://localhost:44388/LibrosService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

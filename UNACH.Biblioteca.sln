@@ -5,6 +5,11 @@ VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UNACH.Biblioteca.WebService", "UNACH.Biblioteca.WebService\UNACH.Biblioteca.WebService.csproj", "{13266205-8179-418B-AB53-364F9E501173}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UNACH.Biblioteca.Window", "UNACH.Biblioteca.Window\UNACH.Biblioteca.Window.csproj", "{D66B3776-3F79-4535-8A4F-4E21C6313FC9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{13266205-8179-418B-AB53-364F9E501173} = {13266205-8179-418B-AB53-364F9E501173}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +20,10 @@ Global
 		{13266205-8179-418B-AB53-364F9E501173}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13266205-8179-418B-AB53-364F9E501173}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13266205-8179-418B-AB53-364F9E501173}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D66B3776-3F79-4535-8A4F-4E21C6313FC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D66B3776-3F79-4535-8A4F-4E21C6313FC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D66B3776-3F79-4535-8A4F-4E21C6313FC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D66B3776-3F79-4535-8A4F-4E21C6313FC9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
